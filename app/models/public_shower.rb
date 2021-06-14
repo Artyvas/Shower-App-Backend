@@ -1,0 +1,2 @@
+class PublicShower < ApplicationRecord
+end
