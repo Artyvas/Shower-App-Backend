@@ -1,0 +1,10 @@
+{
+  email: user.email,
+  password: user.password,
+  first_name: user.first_name,
+  last_name: user.last_name,
+  reputation: user.reputation,
+  gender: user.gender,
+  flagged?: user.flagged?,
+  mp_username: user.mp_username,
+}
