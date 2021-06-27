@@ -10,6 +10,7 @@ class Api::UsersController < ApplicationController
     @user = User.new(
       email: params[:email],
       password: params[:password],
+      password_confirmation: params[:password_confirmation],
       first_name: params[:first_name],
       last_name: params[:last_name],
       reputation: params[:reputation],
@@ -17,8 +18,11 @@ class Api::UsersController < ApplicationController
       flagged?: params[:flagged?],
       mp_username: params[:mp_username],
     )
-    @user.save
-    render "show.index.jb"
+    if @user.save
+      render json: { message: "User created successfully" }, status: :created
+    else 
+      render json: { errors: user.errors.full_messages }, status: :bad_request
+    end
   end
 
   def show
